@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <!-- Imports goog.appengine.Channel. -->
+    <script src='/_ah/channel/jsapi'></script>
+
+    <style type='text/css'>
+      body, input {
+        font-family: 'Helvetica';
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      #chat {
+        position: absolute;
+        bottom: 0px;
+      }
+
+      #newmessage, #newmessage:focus {
+        width: 100%;
+        padding: 5px;
+        border: none;
+        outline: none;
+        outline-offset: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='chat'>
+      <div id='messages'></div>
+      <input placeholder='Send a message' id='newmessage'></input>
+    </div>
+
+    <script type='text/javascript'>
+      var messages = document.getElementById('messages');
+      var newmessage = document.getElementById('newmessage');
+
+      // Perform an asynchronous POST request to the given path.
+      var post = function(path, opt_data) {
+        if (opt_data) {
+          path += '?data=' + encodeURI(opt_data);
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', path, true);
+        xhr.send();
+      }
+
+      var appendMessage = function(message) {
+        messages.innerHTML += '<p>' + message + '</p>'
+      };
+
+      // Wire up the channel event handlers.
+      var channel = new goog.appengine.Channel('{{ token }}');
+      var handler = {
+        'onopen': function() { post('/join'); },
+        'onmessage': function(m) { appendMessage(m.data); },
+        'onerror': function() {},
+        'onclose': function() { post('/leave'); },
+      };
+
+      // Open the socket channel. Let it close when unloading the page.
+      var socket = channel.open(handler);
+      window.onbeforeunload = function(e) {
+        socket.close();
+      };
+
+      // Enter-button handler, i.e. send a message.
+      newmessage.onkeypress = function(e) {
+        if (e.key === 'Enter' && newmessage.value !== '') {
+          post('/send', newmessage.value);
+          newmessage.value = '';
+        }
+      };
+
+      // Force all focus to the input box.
+      newmessage.focus();
+      newmessage.onblur = function(e) {
+        newmessage.focus();
+      };
+
+    </script>
+  </body>
+</html>
