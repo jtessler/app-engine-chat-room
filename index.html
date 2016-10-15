@@ -1,12 +1,6 @@
 <!DOCTYPE html>
-<!-- Imports jQuery -->
-<script src='//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'>
-</script>
-<!-- Imports goog.appengine.Channel. -->
-<script src='/_ah/channel/jsapi'></script>
-
 <style>
-  p, input {
+  #messages, #newmessage {
     font-family: 'Helvetica';
     font-size: 20px;
     font-weight: bold;
@@ -31,6 +25,12 @@
   <div id="messages"></div>
   <input disabled placeholder="Connecting..." id="newmessage"></input>
 </div>
+
+<!-- Imports jQuery -->
+<script src='//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'>
+</script>
+<!-- Imports goog.appengine.Channel. -->
+<script src='/_ah/channel/jsapi'></script>
 
 <script>
   var messages = $('#messages');
