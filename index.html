@@ -1,73 +1,69 @@
-<html>
-  <head>
-    <!-- Imports jQuery -->
-    <script src='//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'>
-    </script>
-    <!-- Imports goog.appengine.Channel. -->
-    <script src='/_ah/channel/jsapi'></script>
+<!DOCTYPE html>
+<!-- Imports jQuery -->
+<script src='//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'>
+</script>
+<!-- Imports goog.appengine.Channel. -->
+<script src='/_ah/channel/jsapi'></script>
 
-    <style type='text/css'>
-      body, input {
-        font-family: 'Helvetica';
-        font-size: 20px;
-        font-weight: bold;
-      }
+<style>
+  p, input {
+    font-family: 'Helvetica';
+    font-size: 20px;
+    font-weight: bold;
+  }
 
-      #chat {
-        width: 100%;
-        position: absolute;
-        bottom: 0px;
-      }
+  #chat {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+  }
 
-      #newmessage, #newmessage:focus {
-        width: 100%;
-        padding: 5px;
-        border: none;
-        outline: none;
-        outline-offset: 0px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="chat">
-      <div id="messages"></div>
-      <input disabled placeholder="Connecting..." id="newmessage"></input>
-    </div>
+  #newmessage, #newmessage:focus {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    outline: none;
+    outline-offset: 0px;
+  }
+</style>
 
-    <script>
-      var messages = $('#messages');
-      var newmessage = $('#newmessage');
+<div id="chat">
+  <div id="messages"></div>
+  <input disabled placeholder="Connecting..." id="newmessage"></input>
+</div>
 
-      // Wire up the channel event handlers.
-      var channel = new goog.appengine.Channel('{{ token }}');
-      var handler = {
-        'onopen': function() {
-          // Let the chatting begin.
-          newmessage.attr('placeholder', 'Send a message');
-          newmessage.attr('disabled', false);
-          newmessage.focus();
-        },
-        'onmessage': function(m) {
-          // Blindly append the message to the end of the element.
-          messages.append('<p>' + m.data + '</p>');
-        },
-        'onerror': function() {}, // No-op.
-        'onclose': function() {}, // No-op.
-      };
-      channel.open(handler);
+<script>
+  var messages = $('#messages');
+  var newmessage = $('#newmessage');
 
-      // Enter-button handler, i.e. send a message.
-      newmessage.on('keypress', function(e) {
-        if (e.key === 'Enter' && newmessage.val() !== '') {
-          $.post('/send', {data: newmessage.val()});
-          newmessage.val('');
-        };
-      });
+  // Wire up the channel event handlers.
+  var channel = new goog.appengine.Channel('{{ token }}');
+  var handler = {
+    'onopen': function() {
+      // Let the chatting begin.
+      newmessage.attr('placeholder', 'Send a message');
+      newmessage.attr('disabled', false);
+      newmessage.focus();
+    },
+    'onmessage': function(m) {
+      // Blindly append the message to the end of the element.
+      messages.append('<p>' + m.data + '</p>');
+    },
+    'onerror': function() {}, // No-op.
+    'onclose': function() {}, // No-op.
+  };
+channel.open(handler);
 
-      // Force all focus to the input box.
-      newmessage.on('blur', function(e) {
-        newmessage.focus();
-      });
-    </script>
-  </body>
-</html>
+// Enter-button handler, i.e. send a message.
+newmessage.on('keypress', function(e) {
+  if (e.key === 'Enter' && newmessage.val() !== '') {
+    $.post('/send', {data: newmessage.val()});
+    newmessage.val('');
+  };
+});
+
+// Force all focus to the input box.
+newmessage.on('blur', function(e) {
+  newmessage.focus();
+});
+</script>
