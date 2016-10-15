@@ -1,5 +1,8 @@
 <html>
   <head>
+    <!-- Imports jQuery -->
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'>
+    </script>
     <!-- Imports goog.appengine.Channel. -->
     <script src='/_ah/channel/jsapi'></script>
 
@@ -26,27 +29,27 @@
     </style>
   </head>
   <body>
-    <div id='chat'>
-      <div id='messages'></div>
-      <input disabled placeholder='Connecting...' id='newmessage'></input>
+    <div id="chat">
+      <div id="messages"></div>
+      <input disabled placeholder="Connecting..." id="newmessage"></input>
     </div>
 
-    <script type='text/javascript'>
-      var messages = document.getElementById('messages');
-      var newmessage = document.getElementById('newmessage');
+    <script>
+      var messages = $('#messages');
+      var newmessage = $('#newmessage');
 
       // Wire up the channel event handlers.
       var channel = new goog.appengine.Channel('{{ token }}');
       var handler = {
         'onopen': function() {
           // Let the chatting begin.
-          newmessage.placeholder = "Send a message";
-          newmessage.disabled = false;
+          newmessage.attr('placeholder', 'Send a message');
+          newmessage.attr('disabled', false);
           newmessage.focus();
         },
         'onmessage': function(m) {
           // Blindly append the message to the end of the element.
-          messages.innerHTML += '<p>' + m.data + '</p>';
+          messages.append('<p>' + m.data + '</p>');
         },
         'onerror': function() {}, // No-op.
         'onclose': function() {}, // No-op.
@@ -54,21 +57,17 @@
       channel.open(handler);
 
       // Enter-button handler, i.e. send a message.
-      newmessage.onkeypress = function(e) {
-        if (e.key === 'Enter' && newmessage.value !== '') {
-          var path = '/send?data=' + encodeURI(newmessage.value);
-          var xhr = new XMLHttpRequest();
-          xhr.open('POST', path, true);
-          xhr.send();
-          newmessage.value = '';
-        }
-      };
+      newmessage.on('keypress', function(e) {
+        if (e.key === 'Enter' && newmessage.val() !== '') {
+          $.post('/send', {data: newmessage.val()});
+          newmessage.val('');
+        };
+      });
 
       // Force all focus to the input box.
-      newmessage.onblur = function(e) {
+      newmessage.on('blur', function(e) {
         newmessage.focus();
-      };
-
+      });
     </script>
   </body>
 </html>
