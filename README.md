@@ -1,13 +1,39 @@
-A simple chat room for App Engine
-=================================
+# A simple chat room for App Engine
 
-Designed to be a starter point for students learning App Engine.
+First project for Scripted Studio at Google!
 
-## Setup instructions ##
+Check out the example here: <TODO add link>
 
-1. [Quickstart for Python App Engine Standard Environment][quickstart]
-1. [Install the Python component][python-component]
-1. Run `$ dev_appserver.py /path/to/app-engine-chat-room`
+## Instructions
 
-[quickstart]:https://cloud.google.com/appengine/docs/python/quickstart
-[python-component]:https://cloud.google.com/sdk/docs/managing-components
+1.  Go to <https://console.cloud.google.com> sign in and click on CREATE PROJECT
+    ![create project button](img/create-project-button.png)
+
+1.  Choose a project name for your project. ![new project
+    dialog](img/new-project-dialog.png)
+
+1.  Clone this repo and open the folder in Eclipse.
+
+1.  Click the **Deploy App Engine Project** button in the toolbar. Enter to
+    project name you create previously. ![eclipse deploy
+    project](img/eclipse-deploy.png)
+
+1.  Once your project is deployed open it up in a browser by going to
+    your-project-name.appspot.com
+
+## Code Walk-through
+
+There are two files with code for this project and one config file. Let's walk
+through them to see what they are doing to make the application work.
+
+### `app.yaml`
+
+TODO
+
+### `main.py`
+
+TODO
+
+### `index.html`
+
+TODO
