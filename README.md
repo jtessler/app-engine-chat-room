@@ -7,14 +7,16 @@ Check out the example here: TODO add link
 ## Instructions
 
 1.  Go to <https://console.cloud.google.com> sign in and click on CREATE PROJECT
-    
+
     ![create project button](img/create-project-button.png)
 
 1.  Choose a project name for your project.
 
     ![new project dialog](img/new-project-dialog.png)
 
-1.  Clone this repo and open the folder in Eclipse.
+1.  Clone this repo and open the folder in Eclipse. Note if Eclipse isn't
+    installed or configured for App Engine see [instructions here]
+    (https://cloud.google.com/appengine/docs/python/tools/setting-up-eclipse)
 
 1.  Click the **Deploy App Engine Project** button in the toolbar. Enter to
     project name you create previously. ![eclipse deploy
