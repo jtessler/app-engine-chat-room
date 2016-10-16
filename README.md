@@ -2,15 +2,17 @@
 
 First project for Scripted Studio at Google!
 
-Check out the example here: <TODO add link>
+Check out the example here: TODO add link
 
 ## Instructions
 
 1.  Go to <https://console.cloud.google.com> sign in and click on CREATE PROJECT
+    
     ![create project button](img/create-project-button.png)
 
-1.  Choose a project name for your project. ![new project
-    dialog](img/new-project-dialog.png)
+1.  Choose a project name for your project.
+
+    ![new project dialog](img/new-project-dialog.png)
 
 1.  Clone this repo and open the folder in Eclipse.
 
@@ -26,14 +28,14 @@ Check out the example here: <TODO add link>
 There are two files with code for this project and one config file. Let's walk
 through them to see what they are doing to make the application work.
 
-### `app.yaml`
+### [`app.yaml`](app.yaml)
 
 TODO
 
-### `main.py`
+### [`main.py`](main.py)
 
 TODO
 
-### `index.html`
+### [`index.html`](index.html)
 
 TODO
