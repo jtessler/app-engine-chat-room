@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <style>
-  #messages, #newmessage {
+  * {
+    margin:0;
+    border: none;
+    outline: none;
     font-family: 'Helvetica';
     font-size: 20px;
     font-weight: bold;
   }
 
   #chat {
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
+    padding: 0 5px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
-  #newmessage, #newmessage:focus {
-    width: 100%;
-    padding: 5px;
-    border: none;
-    outline: none;
-    outline-offset: 0px;
+  #messages {
+    overflow: auto;
+  }
+
+  .message {
+    margin: 1em 0;
   }
 </style>
 
@@ -47,7 +52,7 @@
     },
     'onmessage': function(m) {
       // Blindly append the message to the end of the element.
-      messages.append('<p>' + m.data + '</p>');
+      messages.append('<p class="message">' + m.data + '</p>');
     },
     'onerror': function() {}, // No-op.
     'onclose': function() {}, // No-op.
