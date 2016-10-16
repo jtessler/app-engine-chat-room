@@ -2,7 +2,7 @@
 
 First project for Scripted Studio at Google!
 
-Check out the example here: TODO add link
+Check out the example here: <https://scripted-studio-chat.appspot.com/>
 
 ## Instructions
 
