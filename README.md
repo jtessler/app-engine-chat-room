@@ -6,9 +6,9 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
 
 ## Instructions
 
-1.  Fork this repo ![fork button](img/fork-button.png) and create a new <c9.io>
-    workspace for your fork. Be sure to clone your repo when creating your
-    cloud9 workspace:
+1.  Fork this repo ![fork button](img/fork-button.png) and create a [new clou9
+    workspace](https://c9.io/new/) for your fork. Be sure to clone your repo
+    when creating your cloud9 workspace:
 
     ![c9-setup](img/c9-setup.png)
 
@@ -37,7 +37,7 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
     curl https://dl.google.com/dl/cloudsdk/release/install_google_cloud_sdk.bash | bash
     ```
 
-    Answer yes to the prompted questions.
+    Hit enter each time when prompted to use the default settings.
 
 1.  Authenticate with the google cloud api by running:
 
@@ -45,10 +45,11 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
     ~/google-cloud-sdk/bin/gcloud init
     ```
 
-    Follow the procedure of opening the link and copying the code back to the
+    This command will print a url for you to open in a new tab. When you go to
+    that url you will get a code that you need to copy/paste back in the
     terminal.
 
-    Select the project name you created before when prompted.
+    Select the project name you created before from the list when prompted.
 
 1.  Deploy your project by running
 
@@ -56,10 +57,13 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
     ~/google-cloud-sdk/bin/gcloud app deploy
     ```
 
-1.  Once your project is deployed open it up in a browser by going to
-    your-project-name.appspot.com
+    Make sure to do this from the directory where the app-engine-chat-room code
+    is.
 
-1.  Change the url at the top of this README to your-project-name.appspot.com
+1.  Once your project is deployed open it up in a browser by going to
+    your-project-id.appspot.com
+
+1.  Change the url at the top of this README to your-project-id.appspot.com
 
 1.  Now that your instance of the chat room is deployed customize it to your
     design. Try modifying the CSS or changing the Python code to have new
