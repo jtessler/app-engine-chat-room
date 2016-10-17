@@ -9,7 +9,7 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
 1.  Fork this repo ![fork button](img/fork-button.png) and create a new <c9.io>
     workspace for your fork.
 
-1.  Go to <https://console.cloud.google.com> sign in and click on CREATE PROJECT
+1.  Go to <https://console.cloud.google.com/appengine> sign in and click on CREATE PROJECT
 
     ![create project button](img/create-project-button.png)
 
