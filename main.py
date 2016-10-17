@@ -17,11 +17,11 @@ class HandleConnect(webapp2.RequestHandler):
     user_id = self.request.get('from')
     chat_user = ChatUser.get_by_id(user_id)
 
-    existing_users = ChatUser.query(ChatUser.key != chat_user.key);
+    existing_users = ChatUser.query(ChatUser.key != chat_user.key)
     channel.send_message(chat_user.key.string_id(),
                          'Welcome, %s! Other chatters: %d' %
                          (chat_user.nickname, existing_users.count()))
-    for existing_user in existing_users.iter():
+    for existing_user in existing_users:
       channel.send_message(existing_user.key.string_id(),
                            '%s joined' % chat_user.nickname)
 
@@ -32,8 +32,7 @@ class HandleDisconnect(webapp2.RequestHandler):
     chat_user = ChatUser.get_by_id(user_id)
     chat_user.key.delete()
 
-    remaining_users = ChatUser.query()
-    for user in remaining_users.iter():
+    for user in ChatUser.query():
       channel.send_message(user.key.string_id(), '%s left' % chat_user.nickname)
 
 class HandleSend(webapp2.RequestHandler):
@@ -43,8 +42,7 @@ class HandleSend(webapp2.RequestHandler):
     chat_user = ChatUser.get_by_id(user_id)
 
     data = self.request.get('data')
-    recipients = ChatUser.query();
-    for recipient in recipients.iter():
+    for recipient in ChatUser.query():
       channel.send_message(recipient.key.string_id(),
                            '%s: %s' % (chat_user.nickname, cgi.escape(data)))
 
