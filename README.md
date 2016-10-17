@@ -6,10 +6,17 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
 
 ## Instructions
 
-1.  Fork this repo ![fork button](img/fork-button.png) and create a new <c9.io>
-    workspace for your fork.
+1.  Fork this repo ![fork button](img/fork-button.png) and create a [new clou9
+    workspace](https://c9.io/new/) for your fork. Be sure to clone your repo
+    when creating your cloud9 workspace:
 
-1.  Go to <https://console.cloud.google.com/appengine> sign in and click on CREATE PROJECT
+    ![c9-setup](img/c9-setup.png)
+
+1.  Go to <https://console.cloud.google.com/appengine> sign in and click on
+    CREATE PROJECT.
+
+    If you already have App Engine projects click the dropdown in the top left
+    to create a new one.
 
     ![create project button](img/create-project-button.png)
 
@@ -17,13 +24,20 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
 
     ![new project dialog](img/new-project-dialog.png)
 
+    Note the project ID in the above dialog: `python-minichat-145600` This will
+    be the subdomain of the url to your project, e.g.
+    python-minichat-145600.appspot.com
+
+    You can edit this ID if you like by clicking the Edit button and finding
+    your own unique ID.
+
 1.  In your cloud9 workspace open a terminal and run the following command:
 
     ```sh
     curl https://dl.google.com/dl/cloudsdk/release/install_google_cloud_sdk.bash | bash
     ```
 
-    Answer yes to the prompted questions.
+    Hit enter each time when prompted to use the default settings.
 
 1.  Authenticate with the google cloud api by running:
 
@@ -31,10 +45,11 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
     ~/google-cloud-sdk/bin/gcloud init
     ```
 
-    Follow the procedure of opening the link and copying the code back to the
+    This command will print a url for you to open in a new tab. When you go to
+    that url you will get a code that you need to copy/paste back in the
     terminal.
 
-    Select the project name you created before when prompted.
+    Select the project name you created before from the list when prompted.
 
 1.  Deploy your project by running
 
@@ -42,10 +57,13 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
     ~/google-cloud-sdk/bin/gcloud app deploy
     ```
 
+    Make sure to do this from the directory where the app-engine-chat-room code
+    is.
+
 1.  Once your project is deployed open it up in a browser by going to
-    your-project-name.appspot.com
-    
-1.  Change the url at the top of this README to your-project-name.appspot.com
+    your-project-id.appspot.com
+
+1.  Change the url at the top of this README to your-project-id.appspot.com
 
 1.  Now that your instance of the chat room is deployed customize it to your
     design. Try modifying the CSS or changing the Python code to have new
