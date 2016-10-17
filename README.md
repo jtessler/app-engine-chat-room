@@ -6,7 +6,10 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
 
 ## Instructions
 
-1.  Go to <https://console.cloud.google.com> sign in and click on CREATE PROJECT
+1.  Fork this repo ![fork button](img/fork-button.png) and create a new <c9.io>
+    workspace for your fork.
+
+1.  Go to <https://console.cloud.google.com/appengine> sign in and click on CREATE PROJECT
 
     ![create project button](img/create-project-button.png)
 
@@ -14,22 +17,45 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
 
     ![new project dialog](img/new-project-dialog.png)
 
-1.  Clone this repo and open the folder in Eclipse. Note if Eclipse isn't
-    installed or configured for App Engine see [instructions here]
-    (https://cloud.google.com/appengine/docs/python/tools/setting-up-eclipse)
+1.  In your cloud9 workspace open a terminal and run the following command:
 
-1.  Click the **Deploy App Engine Project** button in the toolbar. Enter to
-    project name you create previously. ![eclipse deploy
-    project](img/eclipse-deploy.png)
+    ```sh
+    curl https://dl.google.com/dl/cloudsdk/release/install_google_cloud_sdk.bash | bash
+    ```
+
+    Answer yes to the prompted questions.
+
+1.  Authenticate with the google cloud api by running:
+
+    ```sh
+    ~/google-cloud-sdk/bin/gcloud init
+    ```
+
+    Follow the procedure of opening the link and copying the code back to the
+    terminal.
+
+    Select the project name you created before when prompted.
+
+1.  Deploy your project by running
+
+    ```sh
+    ~/google-cloud-sdk/bin/gcloud app deploy
+    ```
 
 1.  Once your project is deployed open it up in a browser by going to
     your-project-name.appspot.com
+    
+1.  Change the url at the top of this README to your-project-name.appspot.com
+
+1.  Now that your instance of the chat room is deployed customize it to your
+    design. Try modifying the CSS or changing the Python code to have new
+    behavior. Read through the code walk-through below to learn how the app
+    works and get ideas for what you can add or change.
 
 ## Code Walk-through
 
 There are two files with code for this project and one config file. Let's walk
 through them to see what they are doing to make the application work.
-
 
 ### [`main.py`](main.py)
 
@@ -215,10 +241,10 @@ threadsafe: true
 ```
 
 The next section of the file connects the urls to the `main.py` file.
-`inbound_services` sets up the internal `/_ah/channel/` urls for receiving
-the connect and disconnect notifications.
+`inbound_services` sets up the internal `/_ah/channel/` urls for receiving the
+connect and disconnect notifications.
 
-```yaml
+`````yaml
 inbound_services:
 - channel_presence
 
@@ -236,4 +262,4 @@ libraries:
   version: "2.5.2"
 - name: jinja2
   version: "2.6"
-```
+`````
