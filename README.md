@@ -44,6 +44,8 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
 
 1.  Once your project is deployed open it up in a browser by going to
     your-project-name.appspot.com
+    
+1.  Change the url at the top of this README to your-project-name.appspot.com
 
 1.  Now that your instance of the chat room is deployed customize it to your
     design. Try modifying the CSS or changing the Python code to have new
