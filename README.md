@@ -7,15 +7,29 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
 ## Instructions
 
 1.  Fork this repo ![fork button](img/fork-button.png) and create a new <c9.io>
-    workspace for your fork.
+    workspace for your fork. Be sure to clone your repo when creating your
+    cloud9 workspace:
 
-1.  Go to <https://console.cloud.google.com/appengine> sign in and click on CREATE PROJECT
+    ![c9-setup](img/c9-setup.png)
+
+1.  Go to <https://console.cloud.google.com/appengine> sign in and click on
+    CREATE PROJECT.
+
+    If you already have App Engine projects click the dropdown in the top left
+    to create a new one.
 
     ![create project button](img/create-project-button.png)
 
 1.  Choose a project name for your project.
 
     ![new project dialog](img/new-project-dialog.png)
+
+    Note the project ID in the above dialog: `python-minichat-145600` This will
+    be the subdomain of the url to your project, e.g.
+    python-minichat-145600.appspot.com
+
+    You can edit this ID if you like by clicking the Edit button and finding
+    your own unique ID.
 
 1.  In your cloud9 workspace open a terminal and run the following command:
 
@@ -44,7 +58,7 @@ Check out the example here: <https://scripted-studio-chat.appspot.com/>
 
 1.  Once your project is deployed open it up in a browser by going to
     your-project-name.appspot.com
-    
+
 1.  Change the url at the top of this README to your-project-name.appspot.com
 
 1.  Now that your instance of the chat room is deployed customize it to your
