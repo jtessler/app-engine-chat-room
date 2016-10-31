@@ -29,6 +29,7 @@
 <div id="chat">
   <div id="messages"></div>
   <input disabled placeholder="Connecting..." id="newmessage"></input>
+  <button id="send" type="button">Send</button>
 </div>
 
 <!-- Imports jQuery -->
@@ -65,6 +66,12 @@ newmessage.on('keypress', function(e) {
     $.post('/send', {data: newmessage.val()});
     newmessage.val('');
   };
+});
+
+// Send-button handler, i.e. send a message.
+var send = $('#send');
+send.click(function() {
+  console.log('test');
 });
 
 // Force all focus to the input box.
